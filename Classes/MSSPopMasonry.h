@@ -1,3 +1,3 @@
 #import "POPAnimatableProperty+Masonry.h"
-#import "Masonry.h"
-#import "POP.h"
+@import Masonry;
+@import pop;

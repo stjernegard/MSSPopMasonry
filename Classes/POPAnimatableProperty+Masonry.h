@@ -4,7 +4,7 @@
 //  Created by Mikkel Selsøe Sørensen on 30/05/14.
 //
 
-#import "pop/POPAnimatableProperty.h"
+@import pop.POPAnimatableProperty;
 
 @interface POPAnimatableProperty (Masonry)
 
