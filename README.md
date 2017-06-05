@@ -34,7 +34,6 @@ Support for `insets` is pending Pop supporting `UIEdgeInsets` in `NSValue` objec
 ## Installation
 You can import the MSSPopMasonry files as is or through Cocoapods. If you want to use MSSPopMasonry with the latest versions of Pop and Masonry, all you have to do is specify
 ```
-pod 'MSSPopMasonry' 
+pod 'MSSPopMasonry'
 ```
 in your `Podfile` and both Pop and Masonry will be included in your project along with MSSPopMasonry.
-

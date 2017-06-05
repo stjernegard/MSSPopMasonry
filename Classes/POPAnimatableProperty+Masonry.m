@@ -4,8 +4,8 @@
 //  Created by Mikkel Selsøe Sørensen on 30/05/14.
 //
 
+@import Masonry;
 #import "POPAnimatableProperty+Masonry.h"
-#import "Masonry.h"
 
 CGFloat getLayoutConstant(MASConstraint* constraint) {
     return (CGFloat)[[constraint valueForKey:@"layoutConstant"] floatValue];
@@ -32,7 +32,7 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
         prop.readBlock = ^(MASConstraint *constraint, CGFloat values[]) {
             values[0] = getLayoutConstant(constraint);
         };
-        
+
         prop.writeBlock = ^(MASConstraint *constraint, const CGFloat values[]) {
             [constraint setOffset:values[0]];
         };
@@ -46,7 +46,7 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
         prop.readBlock = ^(MASCompositeConstraint *constraint, CGFloat values[]) {
             CGSize size = CGSizeZero;
             NSArray *childConstraints = getChildren(constraint);
-            
+
             for (MASViewConstraint *childConstraint in childConstraints) {
                 NSLayoutAttribute layoutAttribute = childConstraint.firstViewAttribute.layoutAttribute;
                 switch (layoutAttribute) {
@@ -60,11 +60,11 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
                         break;
                 }
             }
-            
+
             values[0] = size.width;
             values[1] = size.height;
         };
-        
+
         prop.writeBlock = ^(MASConstraint *constraint, const CGFloat values[]) {
             CGSize size = CGSizeMake(values[0], values[1]);
             [constraint setSizeOffset:size];
@@ -77,7 +77,7 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
         prop.readBlock = ^(MASCompositeConstraint *constraint, CGFloat values[]) {
             CGPoint offset = CGPointZero;
             NSArray *childConstraints = getChildren(constraint);
-            
+
             for (MASViewConstraint *childConstraint in childConstraints) {
                 NSLayoutAttribute layoutAttribute = childConstraint.firstViewAttribute.layoutAttribute;
                 switch (layoutAttribute) {
@@ -91,11 +91,11 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
                         break;
                 }
             }
-            
+
             values[0] = offset.x;
             values[1] = offset.y;
         };
-        
+
         prop.writeBlock = ^(MASConstraint *constraint, const CGFloat values[]) {
             CGPoint offset = CGPointMake(values[0], values[1]);
             [constraint setCenterOffset:offset];
@@ -149,7 +149,7 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
         prop.readBlock = ^(MASConstraint *constraint, CGFloat values[]) {
             values[0] = getLayoutMultiplier(constraint);
         };
-        
+
         prop.writeBlock = ^(MASConstraint *constraint, const CGFloat values[]) {
             setLayoutMultiplier(constraint, values[0]);
         };
@@ -161,7 +161,7 @@ NSArray* getChildren(MASCompositeConstraint* constraint)  {
         prop.readBlock = ^(MASConstraint *constraint, CGFloat values[]) {
             values[0] = getLayoutMultiplier(constraint);
         };
-        
+
         prop.writeBlock = ^(MASConstraint *constraint, const CGFloat values[]) {
             setLayoutMultiplier(constraint, 1.0/values[0]);
         };
